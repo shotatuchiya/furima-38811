@@ -56,7 +56,7 @@ belongs_to :exhibit
 | ------------------ | ------ | ---------------------------------- |
 | postal_code        | string | null: false                        |
 | sender_id          | integer | null: false                       |
-| municipalities     | string | null: false                        |
+| municipalitie      | string | null: false                        |
 | address            | string | null: false                        |
 | building_name      | string |                                    |
 | telephone_number   | string | null: false                        |
