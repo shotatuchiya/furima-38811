@@ -27,9 +27,9 @@ has_many :purchases
 | product_description | text       | null: false                   |
 | category_id         | integer    | null: false                   |
 | condition_id        | integer    | null: false                   |
-| shipping_charges_id | integer    | null: false                   |
+| shipping_charge_id  | integer    | null: false                   |
 | sender_id           | integer    | null: false                   |
-| days_to_Ship_id     | integer    | null: false                   |
+| days_to_ship_id     | integer    | null: false                   |
 | price               | integer    | null: false                   |
 
 ### Association
@@ -43,7 +43,6 @@ has_one :purchase
 | ------------------ | ------ | ---------------------------------- |
 | user               | references | null: false, foreign_key: true |
 | exhibit            | references | null: false, foreign_key: true |
-| shipping_addresse  | references | null: false, foreign_key: true |
 
 ### Association
 
