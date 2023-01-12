@@ -48,7 +48,7 @@ has_one :purchase
 ### Association
 
 belongs_to :user
-belongs_to :shipping_address
+has_one :shipping_address
 belongs_to :exhibit
 
 ## shipping_addresses テーブル
@@ -65,5 +65,4 @@ belongs_to :exhibit
 
 ### Association
 
-belongs_to :exhibit
-has_one :purchase
+belongs_to :purchase
