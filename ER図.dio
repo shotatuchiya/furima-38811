@@ -93,6 +93,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
+
                 <mxCell id="43" value="shipping_addresses" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
                     <mxGeometry x="331" y="670" width="160" height="116" as="geometry"/>
                 </mxCell>
@@ -118,6 +119,7 @@
                     <mxGeometry x="331" y="876" width="160" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="51" value="" style="endArrow=ERone;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;startArrow=ERone;startFill=0;endFill=0;endSize=20;startSize=20;strokeWidth=2;" parent="1" source="47" edge="1">
+
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="440" y="510" as="sourcePoint"/>
                         <mxPoint x="730" y="418" as="targetPoint"/>
