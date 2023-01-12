@@ -60,7 +60,7 @@ belongs_to :exhibit
 | address            | string | null: false                        |
 | building_name      | string |                                    |
 | telephone_number   | string | null: false                        |
-| purchases          | references | null: false, foreign_key: true |
+| purchase          | references | null: false, foreign_key: true |
 
 ### Association
 
