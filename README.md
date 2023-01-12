@@ -14,6 +14,7 @@
 | birthday           | date   | null: false                |
 
 ### Association
+
 has_many :exhibit
 has_many :purchase
 
@@ -32,6 +33,7 @@ has_many :purchase
 | price               | string     | null: false                   |
 
 ### Association
+
 belongs_to :users
 has_one :purchases
 
@@ -49,5 +51,6 @@ has_one :purchases
 | exhibit            | references | null: false, foreign_key: true |
 
 ### Association
+
 belongs_to :users
 belongs_to :exhibits
