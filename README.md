@@ -15,42 +15,55 @@
 
 ### Association
 
-has_many :exhibit
-has_many :purchase
+has_many :exhibits
+has_many :purchases
 
 ## exhibits テーブル
 
 | Column             | Type   | Options                            |
 | ------------------ | ------ | ---------------------------------- |
 | user                | references | null: false, foreign_key: true|
-| Product_name        | text       | null: false                   |
-| Product_description | text       | null: false                   |
-| category            | prefecture | null: false                   |
-| condition           | prefecture | null: false                   |
-| Shipping_charges    | prefecture | null: false                   |
-| sender              | prefecture | null: false                   |
-| days_to_Ship        | prefecture | null: false                   |
-| price               | string     | null: false                   |
+| product_name        | string     | null: false                   |
+| product_description | text       | null: false                   |
+| category_id         | integer    | null: false                   |
+| condition_id        | integer    | null: false                   |
+| shipping_charges_id | integer    | null: false                   |
+| sender_id           | integer    | null: false                   |
+| days_to_Ship_id     | integer    | null: false                   |
+| price               | integer    | null: false                   |
 
 ### Association
 
-belongs_to :users
-has_one :purchases
+belongs_to :user
+has_one :purchase
 
 ## purchases テーブル
 
 | Column             | Type   | Options                            |
 | ------------------ | ------ | ---------------------------------- |
-| Postal code        | string | null: false                        |
-| prefectures        | prefecture | null: false                    |
+| user               | references | null: false, foreign_key: true |
+| exhibit            | references | null: false, foreign_key: true |
+| shipping_addresse  | references | null: false, foreign_key: true |
+
+### Association
+
+belongs_to :user
+belongs_to :shipping_address
+belongs_to :exhibit
+
+## shipping_addresses テーブル
+
+| Column             | Type   | Options                            |
+| ------------------ | ------ | ---------------------------------- |
+| postal_code        | string | null: false                        |
+| sender_id          | integer | null: false                       |
 | municipalities     | string | null: false                        |
 | address            | string | null: false                        |
 | building_name      | string |                                    |
 | telephone_number   | string | null: false                        |
-| user               | references | null: false, foreign_key: true |
-| exhibit            | references | null: false, foreign_key: true |
+| purchases          | references | null: false, foreign_key: true |
 
 ### Association
 
-belongs_to :users
-belongs_to :exhibits
+belongs_to :exhibit
+has_one :purchase
