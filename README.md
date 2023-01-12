@@ -1,24 +1,53 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options                    |
+| ------------------ | ------ | -------------------------- |
+| name               | string | null: false                |
+| email              | string | null: false , unique: true |
+| encrypted_password | string | null: false                |
+| first_name         | string | null: false                |
+| last_name          | string | null: false                |
+| first_name_kana    | string | null: false                |
+| last_name_kana     | string | null: false                |
+| birthday           | date   | null: false                |
 
-* Ruby version
+### Association
+has_many :exhibit
+has_many :purchase
 
-* System dependencies
+## exhibits テーブル
 
-* Configuration
+| Column             | Type   | Options                            |
+| ------------------ | ------ | ---------------------------------- |
+| user                | references | null: false, foreign_key: true|
+| Product_name        | text       | null: false                   |
+| Product_description | text       | null: false                   |
+| category            | prefecture | null: false                   |
+| condition           | prefecture | null: false                   |
+| Shipping_charges    | prefecture | null: false                   |
+| sender              | prefecture | null: false                   |
+| days_to_Ship        | prefecture | null: false                   |
+| price               | string     | null: false                   |
 
-* Database creation
+### Association
+belongs_to :users
+belongs_to :purchases
 
-* Database initialization
+## purchases テーブル
 
-* How to run the test suite
+| Column             | Type   | Options                            |
+| ------------------ | ------ | ---------------------------------- |
+| Postal code        | string | null: false                        |
+| prefectures        | prefecture | null: false                    |
+| municipalities     | string | null: false                        |
+| address            | string | null: false                        |
+| building_name      | string |                                    |
+| telephone_number   | string | null: false                        |
+| user               | references | null: false, foreign_key: true |
+| exhibit            | references | null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+belongs_to :users
+has_many :exhibits
