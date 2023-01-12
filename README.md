@@ -33,7 +33,7 @@ has_many :purchase
 
 ### Association
 belongs_to :users
-belongs_to :purchases
+has_one :purchases
 
 ## purchases テーブル
 
@@ -50,4 +50,4 @@ belongs_to :purchases
 
 ### Association
 belongs_to :users
-has_many :exhibits
+belongs_to :exhibits
