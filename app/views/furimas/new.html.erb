@@ -6,13 +6,11 @@
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: @exhibit, url: furimas_path, local: true do |f| %>
-
-  <div class="error-alert ">
-    <div class="error-message">
-      <%= render 'furimas/error_messages', model: f.object%>
+    <div class="error-alert ">
+      <div class="error-message">
+        <%= render 'furimas/error_messages', model: f.object%>
+      </div>
     </div>
-  </div>
-
     <div class="img-upload">
       <div class="weight-bold-text">
         商品画像
