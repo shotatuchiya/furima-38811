@@ -10,16 +10,8 @@ RSpec.describe Exhibit, type: :model do
       it 'image,product_name,product_description,category_id,condition_id,shipping_charge_id,sender_id,days_to_ship_id,priceが存在すれば登録できる' do
         expect(@exhibit).to be_valid
       end
-      it 'product_nameが40字以内なら出品ができる' do
-        expect(@exhibit).to be_valid
-      end
-      it 'product_descriptionが1000字以内なら出品ができる' do
-        expect(@exhibit).to be_valid
-      end
-      it 'priceが300円以上かつ9999999円以内なら出品ができる' do
-        expect(@exhibit).to be_valid
-      end
       it 'priceが半角数値なら出品ができる' do
+        @exhibit.price = 1000
         expect(@exhibit).to be_valid
       end
     end
@@ -75,7 +67,7 @@ RSpec.describe Exhibit, type: :model do
         @exhibit.valid?
         expect(@exhibit.errors.full_messages).to include "Price must be greater than or equal to 300"
       end
-      it 'priceが300円以下では登録できない' do
+      it 'priceが9_999_999円を超えると出品できない' do
         @exhibit.price = '100000000'
         @exhibit.valid?
         expect(@exhibit.errors.full_messages).to include "Price must be less than or equal to 9999999"
@@ -84,6 +76,11 @@ RSpec.describe Exhibit, type: :model do
         @exhibit.price = '１000'
         @exhibit.valid?
         expect(@exhibit.errors.full_messages).to include "Price is not a number"
+      end
+      it 'ユーザー情報がない場合は登録できないこと' do
+        @exhibit.user = nil
+        @exhibit.valid?
+        expect(@exhibit.errors.full_messages).to include "User must exist"
       end
     end
   end
