@@ -1,5 +1,7 @@
 class FurimasController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   def index
+    @exhibits = Exhibit.order('created_at DESC')
   end
 
   def new
@@ -15,10 +17,13 @@ class FurimasController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def exhibit_params
-    params.require(:exhibit).permit( :image, :product_name, :product_description, :category_id, :condition_id, :shipping_charge_id, :sender_id, :days_to_ship_id, :price ).merge(user_id: current_user.id)
+    params.require(:exhibit).permit(:image, :product_name, :product_description, :category_id, :condition_id,
+                                    :shipping_charge_id, :sender_id, :days_to_ship_id, :price).merge(user_id: current_user.id)
   end
-  
 end

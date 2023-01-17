@@ -65,22 +65,22 @@ RSpec.describe Exhibit, type: :model do
       it 'priceが300円以下では登録できない' do
         @exhibit.price = '100'
         @exhibit.valid?
-        expect(@exhibit.errors.full_messages).to include "Price must be greater than or equal to 300"
+        expect(@exhibit.errors.full_messages).to include 'Price must be greater than or equal to 300'
       end
       it 'priceが9_999_999円を超えると出品できない' do
         @exhibit.price = '100000000'
         @exhibit.valid?
-        expect(@exhibit.errors.full_messages).to include "Price must be less than or equal to 9999999"
+        expect(@exhibit.errors.full_messages).to include 'Price must be less than or equal to 9999999'
       end
       it 'priceが全角数値では登録できない' do
         @exhibit.price = '１000'
         @exhibit.valid?
-        expect(@exhibit.errors.full_messages).to include "Price is not a number"
+        expect(@exhibit.errors.full_messages).to include 'Price is not a number'
       end
       it 'ユーザー情報がない場合は登録できないこと' do
         @exhibit.user = nil
         @exhibit.valid?
-        expect(@exhibit.errors.full_messages).to include "User must exist"
+        expect(@exhibit.errors.full_messages).to include 'User must exist'
       end
     end
   end

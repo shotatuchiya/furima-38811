@@ -11,8 +11,7 @@ class Category < ActiveHash::Base
     { id: 9, categyor: 'スポーツ・レジャー' },
     { id: 10, categyor: 'ハンドメイド' },
     { id: 11, categyor: 'その他' }
-    ]
+  ]
   include ActiveHash::Associations
   has_many :exhibits
-
-  end
+end
