@@ -47,7 +47,6 @@ class FurimasController < ApplicationController
   end
 
   def move_to_index
-    @exhibit = Exhibit.find(params[:id])
     unless current_user.id == @exhibit.user_id
       redirect_to root_path
     end
