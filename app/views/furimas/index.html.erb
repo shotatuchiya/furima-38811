@@ -127,7 +127,7 @@
   <% unless @exhibits.blank? %>
     <% @exhibits.each do |exhibit| %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to furima_path(exhibit.id) do %>
         <div class='item-img-content'>
           <%= image_tag(exhibit.image, class: "item-img") %>
 
