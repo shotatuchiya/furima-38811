@@ -70,11 +70,15 @@ RSpec.describe PurchaseShippingAddress, type: :model do
           @purchase_shipping_address.valid?
           expect(@purchase_shipping_address.errors.full_messages).to include 'Telephone number is too short'
         end
-        it 'user_idとexhibit_idが紐付いていないと保存できない' do
+        it 'user_idが紐付いていないと保存できない' do
           @purchase_shipping_address.user_id = nil
-          @purchase_shipping_address.exhibit_id = nil
           @purchase_shipping_address.valid?
           expect(@purchase_shipping_address.errors.full_messages).to include "User can't be blank"
+        end
+        it 'exhibit_idが紐付いていないと保存できない' do
+          @purchase_shipping_address.exhibit_id = nil
+          @purchase_shipping_address.valid?
+          expect(@purchase_shipping_address.errors.full_messages).to include "Exhibit can't be blank"
         end
       end
   end

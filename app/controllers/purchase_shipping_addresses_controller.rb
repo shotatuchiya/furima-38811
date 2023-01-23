@@ -1,7 +1,7 @@
 class PurchaseShippingAddressesController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_index, only: :index
   before_action :set_purchase_shipping_address, only: [:index, :create]
+  before_action :move_to_index, only: :index
 
   def index
     @purchase_shipping_address = PurchaseShippingAddress.new
@@ -40,7 +40,6 @@ class PurchaseShippingAddressesController < ApplicationController
   end
 
   def move_to_index
-    @exhibits = Exhibit.find(params[:furima_id])
     if @exhibits.purchase
       redirect_to root_path
     elsif @exhibits.user == current_user
