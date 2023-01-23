@@ -13,7 +13,8 @@ RSpec.describe PurchaseShippingAddress, type: :model do
         it 'token,postal_code,sender_id,municipalitie,address,telephone_numberが存在すれば購入できる' do
           expect(@purchase_shipping_address).to be_valid
         end
-        it '建物名がからでも購入できる' do
+        it 'building_nameがからでも購入できる' do
+          @purchase_shipping_address.building_name = nil
           expect(@purchase_shipping_address).to be_valid
         end
       end
@@ -54,8 +55,8 @@ RSpec.describe PurchaseShippingAddress, type: :model do
           @purchase_shipping_address.valid?
           expect(@purchase_shipping_address.errors.full_messages).to include 'Postal code is invalid. Enter it as follows(123-1234)'
         end
-        it 'telephone_numberで数値がたらない場合は登録できない' do
-          @purchase_shipping_address.telephone_number = '123456789'
+        it 'telephone_numberで数値が9桁以下では登録できない' do
+          @purchase_shipping_address.telephone_number = '12345678'
           @purchase_shipping_address.valid?
           expect(@purchase_shipping_address.errors.full_messages).to include 'Telephone number is too short'
         end
@@ -71,6 +72,7 @@ RSpec.describe PurchaseShippingAddress, type: :model do
         end
         it 'user_idとexhibit_idが紐付いていないと保存できない' do
           @purchase_shipping_address.user_id = nil
+          @purchase_shipping_address.exhibit_id = nil
           @purchase_shipping_address.valid?
           expect(@purchase_shipping_address.errors.full_messages).to include "User can't be blank"
         end
