@@ -2,6 +2,7 @@ class FurimasController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_exhibit, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
+  before_action :move_to_edit, only: [:edit, :update, :destroy]
   def index
     @exhibits = Exhibit.order('created_at DESC')
   end
@@ -20,6 +21,7 @@ class FurimasController < ApplicationController
   end
 
   def show
+    @purchase_shipping_address = PurchaseShippingAddress.new
   end
 
   def edit
@@ -38,7 +40,6 @@ class FurimasController < ApplicationController
     end
   end
 
-
   private
 
   def exhibit_params
@@ -52,8 +53,13 @@ class FurimasController < ApplicationController
 
   def move_to_index
     unless current_user.id == @exhibit.user_id
-      redirect_to root_path
+    redirect_to root_path
     end
   end
 
+  def move_to_edit
+    if @exhibit.purchase
+    redirect_to root_path
+    end
+  end
 end
