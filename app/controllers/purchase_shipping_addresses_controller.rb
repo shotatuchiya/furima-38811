@@ -1,15 +1,13 @@
 class PurchaseShippingAddressesController < ApplicationController
   before_action :authenticate_user!
   before_action :move_to_index, only: :index
+  before_action :set_purchase_shipping_address, only: [:index, :create]
 
   def index
-    @exhibits = Exhibit.find(params[:furima_id])
-    @exhibit = Exhibit.new
     @purchase_shipping_address = PurchaseShippingAddress.new
   end
 
   def create
-    @exhibits = Exhibit.find(params[:furima_id])
     @purchase_shipping_address = PurchaseShippingAddress.new(purchase_shipping_address_params)
     if @purchase_shipping_address.valid?
       pay_item
@@ -35,6 +33,10 @@ class PurchaseShippingAddressesController < ApplicationController
       card: purchase_shipping_address_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_purchase_shipping_address
+    @exhibits = Exhibit.find(params[:furima_id])
   end
 
   def move_to_index

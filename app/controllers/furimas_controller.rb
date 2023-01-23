@@ -52,14 +52,14 @@ class FurimasController < ApplicationController
   end
 
   def move_to_index
-    return if current_user.id == @exhibit.user_id
-
+    unless current_user.id == @exhibit.user_id
     redirect_to root_path
+    end
   end
 
   def move_to_edit
-    return unless @exhibit.purchase
-
+    if @exhibit.purchase
     redirect_to root_path
+    end
   end
 end
