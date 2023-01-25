@@ -6,12 +6,12 @@ class PurchaseShippingAddress
     validates :user_id
     validates :exhibit_id
     validates :token
-    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Enter it as follows(123-1234)' }
-    validates :sender_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'を次のように入力します(123-1234)' }
+    validates :sender_id, numericality: { other_than: 1, message: "を選択してください" }
     validates :municipalitie
     validates :address
-    validates :telephone_number, format: { with: /\A\d{10,11}\z/, message: 'is too short' },
-                                 numericality: { with: /\A[0-9]+\z/, message: 'is invalid. Input only number' }
+    validates :telephone_number, format: { with: /\A\d{10,11}\z/, message: 'が短すぎます' },
+                                 numericality: { with: /\A[0-9]+\z/, message: 'を半角数字で入力してください' }
   end
 
   def save
